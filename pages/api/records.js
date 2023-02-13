@@ -38,7 +38,23 @@ export default async function handler(req, res) {
       break
 
     case 'GET':
-      res.status(200).json({ records: [] })
+      const rows = await sheet.getRows()
+
+      let records = []
+
+      rows.forEach((row) => {
+        const record = {
+          name: row.name,
+          attend_type: row.attend_type,
+          guest: row.guest,
+          special_request: row.special_request,
+          your_wish: row.your_wish,
+        }
+
+        records = [...records, record]
+      })
+
+      res.status(200).json({ records: records })
       break
 
     default:
