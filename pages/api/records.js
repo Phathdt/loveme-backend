@@ -49,6 +49,7 @@ export default async function handler(req, res) {
           guest: row.guest,
           special_request: row.special_request,
           your_wish: row.your_wish,
+          show: row.show,
         }
 
         records = [...records, record]
